@@ -27,7 +27,7 @@ describe Graph do
 
     @graph.to_png
 
-    pending "Make these work..."
+      
   end
 
   it "should know how many vertices there are" do

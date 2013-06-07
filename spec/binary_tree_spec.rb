@@ -10,6 +10,7 @@ describe BinaryTree do
     before do
       %w(Dan Barry Ted Daniel Alice Andy Sally).each do |name|
         @tree.insert_data(name)
+
       end
     end
 
@@ -25,15 +26,15 @@ describe BinaryTree do
 
     describe "Searching" do
       before do
-        pending "TODO add a searching function..."
+        #@tree = all nodes in order  
       end
 
       it "should count the number of nodes" do
-        @tree.nodes.should eq(7)
+       @tree.nodes.should eq(7)
       end
 
       it "should count the number of leaf nodes" do
-        @tree.nodes.should eq(2)
+        @tree.leaves.should eq(2)
       end
 
       it "should find a Node by name" do
@@ -42,6 +43,7 @@ describe BinaryTree do
 
       it "should return the node with a given name" do
         @tree.find("Ted").should_not be_nil
+        binding.pry
         @tree.find("Ted").left.data.should eq("Daniel")
         @tree.find("Ted").left.right.data.should eq("Sally")
       end

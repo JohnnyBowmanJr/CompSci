@@ -23,11 +23,25 @@ class Graph
   end
 
   def shortest_path(from_node, to_node)
-    mark_unvisted
+    mark_unvisited
     current = from_node
     current.distance = 0
     shortest_path = []
-    unvisted = vertices.clone.delete(current)
+    unvisited = vertices.clone.delete(current)
+    unvisited_adjacents = Hash.new
+    unvisited.each do |city|
+      binding.pry
+      if from_node.adjacent?(city) && !city.visited
+        unvisited_adjacents[city] = (current.edges[city.to_s].cost + current.distance) 
+        if unvisited_adjacents[city] < city.distance 
+          city.distance = unvisited_adjacents[city]
+        end
+      end
+    min_value = unvisited_adjacents.values.min
+    min_city = univisited_adjacents.key(min_value)
+
+
+
 
     while(!to_node.visited) do
       # Do stuff
@@ -38,7 +52,7 @@ class Graph
   end
 
   private
-  def mark_unvisted
+  def mark_unvisited
     self.vertices.each {|v| v.visited = false; v.distance = 1e99 }
   end
 

@@ -1,9 +1,11 @@
 class BinaryTree
   attr_accessor :root
 
+  #builds self.root to include all names
   def insert_data(data)
     self.root = insert(data)
   end
+
 
   def insert(data, node = self.root)
     if node.nil?
@@ -19,6 +21,22 @@ class BinaryTree
   end
 
   def to_s
-    self.root.to_s.squeeze(" ").strip
+    data
   end
+
+  def nodes(node = self.root)  
+    binding.pry
+    if node
+      [nodes(node.left), node, nodes(node.right)].flatten.compact
+    end
+  end
+
+  def include?(name)
+    self.each do |node|
+      if node == name
+        true
+      end 
+    end
+  end
+
 end

@@ -1,4 +1,4 @@
-class Node
+  class Node
   attr_accessor :data
   attr_accessor :left
   attr_accessor :right
